@@ -5,12 +5,6 @@ services:
     build: .
     container_name: query-app
     ports:
-      - "3100:3000"
+      - "3100:3100"
     volumes:
       - .:/app
-
-networks:
-  default:
-    bridge
-
-
