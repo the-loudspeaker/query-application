@@ -6,6 +6,11 @@ problem statement:
 ---
 #### Solution:
 [https://query-application.vercel.app/](https://query-application.vercel.app/)
+
+[Demo Video](https://github.com/the-loudspeaker/query-application/raw/main/video.mkv)
+
+---
+
 #### JS frame works used:
 * ReactJs
 #### Libraries and packages used:
@@ -45,7 +50,7 @@ Submit and favourite buttons aren't active untill the size of the query is 8 cha
 
 The basic wireframe of the design before starting is attached below:
 ### Solution design:
-![](https://beta.appflowy.cloud/api/file_storage/0b1adbe0-0b00-434d-88d7-b05986c1547a/blob/820463092121150171.png)
+![Design](https://raw.githubusercontent.com/the-loudspeaker/query-application/main/design.png)
 
 Some improvements that can be made:
 * More responsive grid layout for variable screen sizes.
