@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+### Query Application
+problem statement:
+> 📌
+> Create, design and implement a web-based application capable of running SQL queries and displaying the results of said query. The application must include a space which accepts SQL queries in the form of user inputs, then runs the given query, and displays the result within the application.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
+#### Solution:
+[https://query-application.vercel.app/](https://query-application.vercel.app/)
+#### JS frame works used:
+* ReactJs
+#### Libraries and packages used:
+* Material-UI
+* Base-UI
+* material Icons
+* papaparse
+#### Page load times:
+|First contentful paint|0.3 s|
+|-|-|
+|largest contentful paint|0.6 s|
+|Speed index|0.5 s|
+These values were measured using [Lighthouse](https://github.com/GoogleChrome/lighthouse)
 
-## Available Scripts
+#### Idea:
+Basic requirements for the solution are a textbox, a submit button and a table displaying the result.
+This is pretty simillar to the couchbase query workbench that I use in my day to day work.
+Some nice to have improvements would be:
+* Statistics of query size, time, rows, columns, etc.
+* Ability to download the data in multiple formats.
+* Ability to sort the table columns.
+* Ability to view large chunks of data in a paginated manner.
+Since the application is aimed at Data Analysts, following features would be useful for them:
+* Large query space to enter multi-line queries.
+* A history of recent queries.
+* A list of favourite queries
 
-In the project directory, you can run:
+#### Implementation:
+Since queries and result doesn't have to be linked, I have hardcoded some results to specific key words.
+Data is fetched using a GET API call and parsed using papaparse into a CSV format.
+Any query with the keyword `nifty` will fetch a large amount of data which has `24k rows`.
+Some queries which start with `delete`, `update`, `insert` and `drop` keywords don't actually return a response but affect rows. Application emulates this by identifying these words and not showing a table for them. But it `updates the statistics of time, size and rows`.
 
-### `npm start`
+The application uses ReactJS framework and [Material UI components](https://mui.com/material-ui/getting-started/) of Button, Table and TextArea to build some of the functional components that are displayed. The application handles large amounts of data as shown in the video. Using `React.useState` various state variables are used and managed across the application. The application implements all of the above mentioned featuers of paginatiion, sort, recent queries, favourites, etc.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The basic wireframe of the design before starting is attached below:
+### Solution design:
+![](https://beta.appflowy.cloud/api/file_storage/0b1adbe0-0b00-434d-88d7-b05986c1547a/blob/820463092121150171.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Some improvements that can be made:
+* More responsive grid layout for variable screen sizes.
+* Improved theming and dark mode.
+* A help button which opens a modal to give info about various parts of the application.
+* Responsive max lines and word wrap in table cells.
 
-### `npm test`
+#### Deployment
+The application is deployed using [vercel](https://vercel.com/). It also has a Dockerfile and a docker-compose.yml for containerised deployment.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Testing:
+Run the following queries in the application to test various use cases:
+* `select * from development`
+* `select * from products`
+* `select * from nifty`
+* `update * from products`
+* `delete * from nifty`
+Click on the favourite button to mark a query as favourite.
+Click on any query in the favourites list or recent queries list to paste that query in the textbox.
