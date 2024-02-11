@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  query-app:
+    build: .
+    container_name: query-app
+    ports:
+      - "3100:3000"
+    volumes:
+      - .:/app
+
+networks:
+  default:
+    bridge
+
+
