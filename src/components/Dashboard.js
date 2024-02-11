@@ -40,7 +40,9 @@ export default function DashboardPage() {
     setQuery(event.target.value);
   };
   const handleViewChange = (event, newView) => {
-    setView(newView);
+    if(newView!==null){
+      setView(newView);
+    }
   };
 
   const handleFetch = async () => {
