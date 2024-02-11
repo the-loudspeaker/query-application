@@ -40,6 +40,8 @@ Any query with the keyword `nifty` will fetch a large amount of data which has `
 Some queries which start with `delete`, `update`, `insert` and `drop` keywords don't actually return a response but affect rows. Application emulates this by identifying these words and not showing a table for them. But it `updates the statistics of time, size and rows`.
 
 The application uses ReactJS framework and [Material UI components](https://mui.com/material-ui/getting-started/) of Button, Table and TextArea to build some of the functional components that are displayed. The application handles large amounts of data as shown in the video. Using `React.useState` various state variables are used and managed across the application. The application implements all of the above mentioned featuers of paginatiion, sort, recent queries, favourites, etc.
+Timestamp of recent and favourite queries is also saved along with them. Clicking on them pastes the query in textbox.
+Submit and favourite buttons aren't active untill the size of the query is 8 characters.
 
 The basic wireframe of the design before starting is attached below:
 ### Solution design:
